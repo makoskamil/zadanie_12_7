@@ -27,7 +27,7 @@ function Column(id, name) {
                 data: {
                     name: cardName,
                     bootcamp_kanban_column_id: self.id
-                    },
+                },
                 success: function(response) {
                     var card = new Card(response.id, cardName);
                     self.createCard(card);
@@ -35,14 +35,16 @@ function Column(id, name) {
             });
 		});
 			
-			// KONSTRUOWANIE ELEMENTU KOLUMNY
+		// KONSTRUOWANIE ELEMENTU KOLUMNY
 		column.append(columnTitle)
 			.append(columnDelete)
 			.append(columnAddCard)
 			.append(columnCardList);
-			return column;
-		}
+			
+        return column;
 	}
+}
+
 Column.prototype = {
 	createCard: function(card) {
 	  this.element.children('ul').append(card.element);
@@ -50,7 +52,7 @@ Column.prototype = {
 	deleteColumn: function() {
         var self = this;
         $.ajax({
-            url: baseUrl + '/column' + self.id,
+            url: baseUrl + '/column/' + self.id,
             method: 'DELETE',
             success: function(response){
                 self.element.remove();
