@@ -11,9 +11,9 @@ $('.create-column')
 	.click(function(){
 		var columnName = prompt('Enter a column name');
         $.ajax({
-            url.baseUrl + '/column',
+            url: baseUrl + '/column',
             method: 'POST',
-            data {
+            data: {
                 name: columnName
             },
             success: function(response){
